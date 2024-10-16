@@ -2,12 +2,13 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Press Start 2P', cursive;
-  background-color: #201C16; /* Dark OSRS brown */
-  color: #d4c191; /* OSRS gold */
+  font-family: 'Poppins', sans-serif; /* Using Poppins font */
+  background-color: #2E3440; /* Polar Night - dark background */
+  color: #ECEFF4; /* Snow Storm - light text */
   height: 100vh;
   display: flex;
 }
@@ -21,16 +22,18 @@ body {
 /* Sidebar Navbar */
 .navbar {
   width: 250px;
-  background-color: #191714; /* Darker background for navbar */
+  background-color: #3B4252; /* Polar Night - slightly lighter */
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+  border-right: 2px solid #4C566A; /* Slight border for separation */
 }
 
 .navbar .logo {
-  font-size: 1.5rem;
-  color: #ffbb33; /* OSRS yellow for the logo */
+  font-size: 1.8rem;
+  color: #88C0D0; /* Frost - light blue accent */
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -45,13 +48,16 @@ body {
 
 .navbar ul li a {
   text-decoration: none;
-  color: #d4c191; /* OSRS gold */
-  transition: color 0.3s ease;
-  font-size: 1rem;
+  color: #ECEFF4; /* Snow Storm - light text */
+  transition: color 0.3s ease, padding 0.3s ease; /* Add transition for padding */
+  font-size: 1.1rem;
+  padding: 0.5rem; /* Added padding for better click area */
+  border-radius: 5px; /* Slightly rounded corners for links */
 }
 
 .navbar ul li a:hover {
-  color: #ffbb33; /* Highlight on hover */
+  color: #88C0D0; /* Frost - light blue on hover */
+  background-color: rgba(136, 192, 208, 0.2); /* Light background on hover for depth */
 }
 
 /* Main Content */
@@ -64,10 +70,10 @@ body {
   align-items: center;
 }
 
-#main-content h2 {
-  font-size: 2.5rem;
+#main-content h1 {
+  font-size: 3rem; /* Increased font size for better visibility */
+  color: #81A1C1; /* Frost - heading color */
   margin-bottom: 2rem;
-  color: #ffbb33; /* OSRS gold for headings */
   animation: fadeIn 1s ease-in;
 }
 
@@ -81,10 +87,10 @@ body {
 
 .ge-form input {
   padding: 0.7rem;
-  border: 2px solid #d4c191;
-  background-color: #2a240d; /* Dark brown for input background */
-  color: #d4c191;
-  border-radius: 5px;
+  border: 2px solid #ECEFF4;
+  background-color: #4C566A; /* Polar Night - input background */
+  color: #ECEFF4; /* Snow Storm - input text */
+  border-radius: 8px;
   width: 350px;
   margin-bottom: 1rem;
   font-size: 1rem;
@@ -92,28 +98,26 @@ body {
 
 .ge-form button {
   padding: 0.7rem 2rem;
-  background-color: #2a240d;
-  border: 2px solid #d4c191;
-  color: #d4c191;
+  background-color: #5E81AC; /* Frost - button background */
+  border: none;
+  color: #ECEFF4; /* Snow Storm - button text */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s;
   font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .ge-form button:hover {
-  background-color: #ffbb33; /* Button hover color */
-  border-color: #ffbb33;
+  background-color: #88C0D0; /* Button hover color */
   transform: scale(1.05);
 }
 
 /* Result Box */
 .result {
   padding: 2rem;
-  background-color: #191714;
-  border: 2px solid #d4c191;
+  background-color: #3B4252;
   border-radius: 10px;
-  color: #1fd343;
+  color: #A3BE8C; /* Frost Green - for positive elements */
   width: 90%; /* Increased width for the information box */
   max-width: 800px; /* Maximum width */
   margin-top: 2rem;
@@ -122,9 +126,6 @@ body {
   transform: scale(0.95);
   transition: opacity 0.5s ease, transform 0.5s ease;
   text-align: center; /* Center the text */
-  white-space: normal; /* Allow text to wrap normally */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Show ellipsis for overflowing text */
 }
 
 .result.visible {
@@ -134,13 +135,30 @@ body {
 }
 
 .result h3 {
-  font-size: 2rem; /* Larger font for item name */
+  font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 
 .result p {
-  font-size: 1.2rem; /* Adjust font size for readability */
+  font-size: 1.2rem;
   margin-bottom: 0.8rem;
+}
+
+/* Smooth transition for links */
+a {
+  transition: color 0.3s ease;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Ensuring responsiveness */
@@ -157,4 +175,3 @@ body {
     font-size: 1rem; /* Smaller font for details on mobile */
   }
 }
-
