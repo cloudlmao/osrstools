@@ -27,12 +27,21 @@ async function searchItem() {
     const itemPrice = priceData.data[matchedItem.id];
     if (!itemPrice) throw new Error("Price not found for item");
     
+    // Set color for the item name based on price
+    let priceColor = "#d4c191"; // Default OSRS gold
+    if (itemPrice.high >= 1000000) {
+      priceColor = "#FF4500"; // Orange-Red for high-value items
+    } else if (itemPrice.high <= 10000) {
+      priceColor = "#32CD32"; // LimeGreen for low-value items
+    }
+
     resultDiv.innerHTML = `
-      <h3>${matchedItem.name}</h3>
+      <h3 style="color:${priceColor}">${matchedItem.name}</h3>
       <p>Examine: ${matchedItem.examine}</p>
-      <p>Current Price: ${itemPrice.high}</p>
-      <p>Low Price: ${itemPrice.low}</p>
-      <p>Members: ${matchedItem.members}</p>
+      <p>Current Price: ${itemPrice.high.toLocaleString()} gp</p>
+      <p>Low Price: ${itemPrice.low.toLocaleString()} gp</p>
+      <p>High Alch: ${matchedItem.highalch.toLocaleString()} gp</p>
+      <p>Members: ${matchedItem.members ? "Yes" : "No"}</p>
     `;
     resultDiv.classList.add('visible');
   } catch (error) {
