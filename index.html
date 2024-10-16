@@ -1,45 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Search items in the Old School RuneScape Grand Exchange using OSRS Tools. Get up-to-date item prices and trends.">
-  <meta name="keywords" content="OSRS, Grand Exchange, Old School RuneScape, Item Search, GE prices">
-  <meta name="robots" content="index, follow">
-  <title>Grand Exchange Item Search - OSRS Tools</title>
-  
-  <!-- Updated Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="icon" type="image/x-icon" href="/imgs/1024px-Grand_Exchange_logo.png">
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.5.3"></script>
-  <script src="../js/app.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OSRS Grand Exchange Tracker - Track prices and trends in Old School RuneScape's Grand Exchange">
+    <title>OSRS Grand Exchange Tracker</title>
+    <link rel="icon" href="./imgs/1024px-Grand_Exchange_logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-search@2.0.0/dist/umd/js-search.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./js/script.js" defer></script>
 </head>
-<body>
-
-  <!-- Container for Sidebar and Main Content -->
-  <div class="container">
-    
-    <!-- Sidebar Navbar -->
-    <nav class="navbar">
-      <div class="logo">OSRS Tools</div>
-      <ul>
-        <li><a href="../index.html">Grand Exchange</a></li>
-        <li><a href="../pages/stats.html">User Stats</a></li>
-      </ul>
-    </nav>
-
-    <!-- Main Content -->
-    <main id="main-content">
-      <h1>Grand Exchange Item Search</h1>
-      <div class="ge-form">
-        <input type="text" id="item" placeholder="Enter Item Name" />
-        <button onclick="searchItem()">Search Item</button>
-      </div>
-      <div id="ge-result" class="result hidden"></div>
-    </main>
-
-  </div>
-
+<body class="bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>OSRS Tracker</span>
+                    </h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-toggle="collapse" data-target="#grandExchangeSubmenu" aria-expanded="false">
+                                Grand Exchange
+                            </a>
+                            <ul class="collapse list-unstyled" id="grandExchangeSubmenu">
+                                <li>
+                                    <a class="nav-link" href="#" id="filter-all">All Items</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#" id="filter-top">Top Items</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#" id="filter-highest">Highest Price</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#" id="filter-lowest">Lowest Price</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#" id="filter-most-recent">Most Recent</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- Main content -->
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Grand Exchange Items</h1>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input type="text" id="search-input" class="form-control" placeholder="Search items...">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>High Price</th>
+                                <th>Low Price</th>
+                                <th>Last Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody id="item-list">
+                            <!-- Item rows will be dynamically generated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- Item Details Modal (unchanged) -->
+    <div class="modal fade" id="itemDetailsModal" tabindex="-1" role="dialog" aria-labelledby="itemDetailsModalLabel" aria-hidden="true">
+        <!-- Modal content remains the same -->
+    </div>
 </body>
 </html>

@@ -1,177 +1,103 @@
-/* General Styling */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #f8f9fa;
+  --text-color: #333333;
+  --sidebar-width: 250px;
 }
 
 body {
-  font-family: 'Poppins', sans-serif; /* Using Poppins font */
-  background-color: #2E3440; /* Polar Night - dark background */
-  color: #ECEFF4; /* Snow Storm - light text */
-  height: 100vh;
-  display: flex;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
-.container {
-  display: flex;
-  width: 100%;
-  height: 100vh;
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 48px 0 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  width: var(--sidebar-width);
 }
 
-/* Sidebar Navbar */
-.navbar {
-  width: 250px;
-  background-color: #3B4252; /* Polar Night - slightly lighter */
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
-  border-right: 2px solid #4C566A; /* Slight border for separation */
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.navbar .logo {
-  font-size: 1.8rem;
-  color: #88C0D0; /* Frost - light blue accent */
-  margin-bottom: 2rem;
-  text-align: center;
+.sidebar .nav-link {
+  font-weight: 500;
+  color: var(--text-color);
 }
 
-.navbar ul {
-  list-style: none;
+.sidebar .nav-link:hover {
+  color: var(--primary-color);
 }
 
-.navbar ul li {
-  margin-bottom: 1.5rem;
+.sidebar .nav-link.active {
+  color: var(--primary-color);
 }
 
-.navbar ul li a {
-  text-decoration: none;
-  color: #ECEFF4; /* Snow Storm - light text */
-  transition: color 0.3s ease, padding 0.3s ease; /* Add transition for padding */
-  font-size: 1.1rem;
-  padding: 0.5rem; /* Added padding for better click area */
-  border-radius: 5px; /* Slightly rounded corners for links */
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
 }
 
-.navbar ul li a:hover {
-  color: #88C0D0; /* Frost - light blue on hover */
-  background-color: rgba(136, 192, 208, 0.2); /* Light background on hover for depth */
+main {
+  padding-top: 48px;
 }
 
-/* Main Content */
-#main-content {
-  flex: 1;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#main-content h1 {
-  font-size: 3rem; /* Increased font size for better visibility */
-  color: #81A1C1; /* Frost - heading color */
-  margin-bottom: 2rem;
-  animation: fadeIn 1s ease-in;
-}
-
-/* Form and Button */
-.ge-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.ge-form input {
-  padding: 0.7rem;
-  border: 2px solid #ECEFF4;
-  background-color: #4C566A; /* Polar Night - input background */
-  color: #ECEFF4; /* Snow Storm - input text */
-  border-radius: 8px;
-  width: 350px;
-  margin-bottom: 1rem;
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
   font-size: 1rem;
+  background-color: rgba(0, 0, 0, .25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
 }
 
-.ge-form button {
-  padding: 0.7rem 2rem;
-  background-color: #5E81AC; /* Frost - button background */
-  border: none;
-  color: #ECEFF4; /* Snow Storm - button text */
+.table {
+  font-size: 0.9rem;
+}
+
+.table th {
+  border-top: none;
+}
+
+.item-row {
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s;
-  font-size: 1rem;
-  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
-.ge-form button:hover {
-  background-color: #88C0D0; /* Button hover color */
-  transform: scale(1.05);
+.item-row:hover {
+  background-color: rgba(52, 152, 219, 0.1);
 }
 
-/* Result Box */
-.result {
-  padding: 2rem;
-  background-color: #3B4252;
-  border-radius: 10px;
-  color: #A3BE8C; /* Frost Green - for positive elements */
-  width: 90%; /* Increased width for the information box */
-  max-width: 800px; /* Maximum width */
-  margin-top: 2rem;
-  display: none;
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  text-align: center; /* Center the text */
+#search-input {
+  max-width: 100%;
+  transition: box-shadow 0.3s ease;
 }
 
-.result.visible {
-  display: block;
-  opacity: 1;
-  transform: scale(1);
+#search-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
 }
 
-.result h3 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.result p {
-  font-size: 1.2rem;
-  margin-bottom: 0.8rem;
-}
-
-/* Smooth transition for links */
-a {
-  transition: color 0.3s ease;
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (max-width: 767.98px) {
+  .sidebar {
+      top: 5rem;
   }
 }
 
-/* Ensuring responsiveness */
-@media (max-width: 768px) {
-  .result {
-    width: 95%; /* Adjust width on smaller screens */
-  }
-
-  .result h3 {
-    font-size: 1.8rem; /* Slightly smaller font for item name on mobile */
-  }
-
-  .result p {
-    font-size: 1rem; /* Smaller font for details on mobile */
+@media (min-width: 768px) {
+  main {
+      padding-left: calc(var(--sidebar-width) + 1.5rem);
   }
 }
