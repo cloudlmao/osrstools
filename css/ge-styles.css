@@ -1,0 +1,174 @@
+/* General Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #201C16; /* Dark OSRS brown */
+  color: #d4c191; /* OSRS gold */
+  height: 100vh;
+  display: flex;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Sidebar Navbar */
+.navbar {
+  width: 250px;
+  background-color: #191714;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  color: #ffbb33;
+  margin-bottom: 2rem;
+}
+
+.navbar ul {
+  list-style: none;
+}
+
+.navbar ul li {
+  margin-bottom: 1.5rem;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #d4c191;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+}
+
+.navbar ul li a:hover {
+  color: #ffbb33;
+}
+
+/* Main Content */
+#main-content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #c4b58a; /* Matching font color from stats-styles */
+  animation: fadeIn 1s ease-in;
+}
+
+.ge-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.ge-form input {
+  padding: 0.7rem;
+  border: 2px solid #d4c191;
+  background-color: #2a240d;
+  color: #d4c191;
+  border-radius: 5px;
+  width: 350px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.ge-form button {
+  padding: 0.7rem 2rem;
+  background-color: #2a240d;
+  border: 2px solid #d4c191;
+  color: #d4c191;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.ge-form button:hover {
+  background-color: #ffbb33;
+  border-color: #ffbb33;
+  transform: scale(1.05);
+}
+
+/* Result Box */
+.result {
+  padding: 1.5rem;
+  background-color: #191714;
+  border: 2px solid #d4c191;
+  border-radius: 10px;
+  color: #ffbb33;
+  width: 80%;
+  max-width: 600px;
+  margin-top: 2rem;
+  display: none; /* Hidden by default */
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.result.visible {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#main-content h2 {
+  animation: fadeIn 1s ease-in;
+}
+
+.result {
+  animation: fadeIn 1.5s ease-in;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    width: 200px;
+    padding: 1rem;
+  }
+
+  .navbar .logo {
+    font-size: 1.3rem;
+  }
+
+  #main-content h2 {
+    font-size: 2rem;
+  }
+
+  .ge-form input {
+    width: 300px;
+  }
+
+  .result {
+    width: 90%;
+  }
+}

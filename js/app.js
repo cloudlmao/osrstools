@@ -1,51 +1,42 @@
-// Fetch user stats from OSRS Hiscores API
-async function fetchStats() {
-  const username = document.getElementById('username').value;
-  const resultDiv = document.getElementById('stats-result');
-
-  if (!username) {
-    resultDiv.innerHTML = "Please enter a username.";
-    return;
-  }
-
-  try {
-    const response = await fetch(`https://api.runescape.com/hiscores/osrs/username/${username}`);
-    if (!response.ok) throw new Error("Player not found");
-
-    const data = await response.json();
-    resultDiv.innerHTML = `
-      <h3>${username}'s Stats</h3>
-      <p>Overall Rank: ${data.rank}</p>
-      <p>Total XP: ${data.totalXP}</p>
-      <!-- Display more stats here -->
-    `;
-  } catch (error) {
-    resultDiv.innerHTML = `Error: ${error.message}`;
-  }
-}
-
-// Fetch item data from OSRS Grand Exchange API
 async function searchItem() {
   const item = document.getElementById('item').value;
   const resultDiv = document.getElementById('ge-result');
-
   if (!item) {
     resultDiv.innerHTML = "Please enter an item name.";
+    resultDiv.classList.add('visible');
     return;
   }
-
   try {
-    const response = await fetch(`https://api.runescape.com/ge/item/${item}`);
-    if (!response.ok) throw new Error("Item not found");
+    const itemResponse = await fetch(`https://prices.runescape.wiki/api/v1/osrs/mapping`);
+    if (!itemResponse.ok) throw new Error("Failed to fetch item data");
+    const itemData = await itemResponse.json();
+    
+    const options = {
+      includeScore: true,
+      keys: ['name']
+    };
+    const fuse = new Fuse(itemData, options);
+    const result = fuse.search(item);
+    if (result.length === 0) throw new Error("Item not found in mapping data");
+    const matchedItem = result[0].item;
 
-    const data = await response.json();
+    const priceResponse = await fetch(`https://prices.runescape.wiki/api/v1/osrs/latest`);
+    if (!priceResponse.ok) throw new Error("Failed to fetch item prices");
+    const priceData = await priceResponse.json();
+    
+    const itemPrice = priceData.data[matchedItem.id];
+    if (!itemPrice) throw new Error("Price not found for item");
+    
     resultDiv.innerHTML = `
-      <h3>${data.name}</h3>
-      <p>Price: ${data.price}</p>
-      <p>Description: ${data.description}</p>
-      <!-- Add more item details here -->
+      <h3>${matchedItem.name}</h3>
+      <p>Examine: ${matchedItem.examine}</p>
+      <p>Current Price: ${itemPrice.high}</p>
+      <p>Low Price: ${itemPrice.low}</p>
+      <p>Members: ${matchedItem.members}</p>
     `;
+    resultDiv.classList.add('visible');
   } catch (error) {
     resultDiv.innerHTML = `Error: ${error.message}`;
+    resultDiv.classList.add('visible');
   }
 }

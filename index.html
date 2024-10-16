@@ -3,30 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OSRS Tracker</title>
+  <title>Grand Exchange - OSRS Tracker</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/app.js" defer></script>
+  <link rel="stylesheet" href="../css/ge-styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.5.3"></script>
+  <script src="../js/app.js" defer></script>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">OSRS Tracker</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="pages/stats.html">User Stats</a></li>
-      <li><a href="pages/ge.html">Grand Exchange</a></li>
-    </ul>
-  </nav>
+  <!-- Container for Sidebar and Main Content -->
+  <div class="container">
+    
+    <!-- Sidebar Navbar -->
+    <nav class="navbar">
+      <div class="logo">OSRS Tracker</div>
+      <ul>
+        <li><a href="../index.html">Grand Exchange</a></li>
+        <li><a href="./pages/stats.html">User Stats</a></li>
+      </ul>
+    </nav>
 
-  <!-- Main Section -->
-  <section id="home">
-    <div class="welcome">
-      <h1>Welcome to OSRS Tracker</h1>
-      <p>Track user stats and browse items on the Grand Exchange.</p>
-    </div>
-  </section>
+    <!-- Main Content -->
+    <section id="main-content">
+      <h2>Grand Exchange Item Search</h2>
+      <div class="ge-form">
+        <input type="text" id="item" placeholder="Enter Item Name" />
+        <button onclick="searchItem()">Search Item</button>
+      </div>
+      <div id="ge-result" class="result hidden"></div> <!-- Start as hidden -->
+    </section>
+
+  </div>
 
 </body>
 </html>
