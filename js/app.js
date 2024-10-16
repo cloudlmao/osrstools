@@ -49,3 +49,31 @@ async function searchItem() {
     resultDiv.classList.add('visible');
   }
 }
+
+async function searchUser() {
+  const username = document.getElementById('username').value; // Get username input
+  const resultDiv = document.getElementById('user-result');
+  if (!username) {
+    resultDiv.innerHTML = "Please enter a username.";
+    resultDiv.classList.add('visible');
+    return;
+  }
+  try {
+    const userResponse = await fetch(`https://api.runescape.com/user/${username}`); // Adjust the API URL as needed
+    if (!userResponse.ok) throw new Error("Failed to fetch user data");
+    const userData = await userResponse.json();
+    
+    // Display user data (adjust according to the actual user data structure)
+    resultDiv.innerHTML = `
+      <h3>${userData.username}</h3>
+      <p>Combat Level: ${userData.combatLevel}</p>
+      <p>Total Level: ${userData.totalLevel}</p>
+      <p>Total Experience: ${userData.totalExperience.toLocaleString()} xp</p>
+      <!-- Add more fields as needed -->
+    `;
+    resultDiv.classList.add('visible');
+  } catch (error) {
+    resultDiv.innerHTML = `Error: ${error.message}`;
+    resultDiv.classList.add('visible');
+  }
+}

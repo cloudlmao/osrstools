@@ -2,7 +2,6 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -114,7 +113,7 @@ body {
   background-color: #191714;
   border: 2px solid #d4c191;
   border-radius: 10px;
-  color: #ffbb33;
+  color: #1fd343;
   width: 90%; /* Increased width for the information box */
   max-width: 800px; /* Maximum width */
   margin-top: 2rem;

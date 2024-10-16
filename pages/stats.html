@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Stats - OSRS Tools</title>
+  <title>User Search - OSRS Tools</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/x-icon" href="/imgs/Attack_icon.png">
   <script src="../js/app.js" defer></script>
 </head>
 <body>
@@ -24,10 +25,12 @@
 
     <!-- Main Content -->
     <section id="main-content">
-      <h2>User Stats</h2>
-      <div id="stats-content" class="content">
-        <p>Work in Progress...</p>
+      <h2>User Search</h2>
+      <div class="ge-form">
+        <input type="text" id="username" placeholder="Enter username..." />
+        <button onclick="searchUser()">Search for user</button>
       </div>
+      <div id="user-result" class="result hidden"></div>
     </section>
 
   </div>
