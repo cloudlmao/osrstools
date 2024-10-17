@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #eceff4; /* Soft light background */
@@ -5,6 +6,7 @@ body {
   margin: 0; /* Remove default margin */
 }
 
+/* Sidebar Styles */
 .sidebar {
   height: 100vh; /* Make the sidebar full height */
   position: fixed; /* Fix the sidebar in place */
@@ -23,6 +25,7 @@ body {
   overflow-y: auto;
 }
 
+/* Sidebar Navigation Links */
 .sidebar .nav-link {
   font-weight: 500; /* Medium weight for links */
   color: #d8dee9; /* Light text for links */
@@ -35,6 +38,7 @@ body {
   border-left: 4px solid #88c0d0; /* Indicator for active state */
 }
 
+/* Sidebar Headings */
 .sidebar-heading {
   font-size: 0.75rem; /* Smaller heading */
   text-transform: uppercase; /* Uppercase heading */
@@ -42,10 +46,12 @@ body {
   margin: 1rem 0; /* Space around headings */
 }
 
+/* Table Responsive */
 .table-responsive {
   margin-top: 20px; /* Space between elements */
 }
 
+/* Item Row Styles */
 .item-row {
   cursor: pointer; /* Change cursor on hover */
   transition: background-color 0.2s ease; /* Smooth hover transition */
@@ -55,6 +61,7 @@ body {
   background-color: #d8dee9; /* Light hover effect */
 }
 
+/* Search Input Styles */
 #search-input {
   max-width: 300px; /* Limit search input width */
   padding: 0.5rem; /* Padding for input */
@@ -77,14 +84,15 @@ body {
 
 #flippingSubMenu {
   margin-top: 10px; /* Space above flipping submenu */
-  padding-left: 20px; /* Indent submenu */
 }
 
+/* Flipping Submenu Link Hover */
 #flippingSubMenu .nav-link:hover {
   color: #81a1c1; /* Lighter blue on hover */
   text-decoration: underline; /* Underline on hover */
 }
 
+/* Item Details Row */
 .item-details-row td {
   background-color: #eceff4; /* Light background for details */
 }
@@ -148,7 +156,7 @@ body {
   border-color: transparent transparent #eceff4 transparent; /* Arrow color */
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .sidebar {
     position: relative; /* Allow sidebar to scroll with content on smaller screens */
