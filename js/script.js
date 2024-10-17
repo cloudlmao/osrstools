@@ -73,9 +73,9 @@ function displayItems(itemsToDisplay) {
     itemsToDisplay.slice(0, 100).forEach(item => {
         // Determine the color based on the item's price
         let nameColor = 'black'; // Default color
-        if (item.high && item.high > 1000) {
-            nameColor = 'green'; // High price
-        } else if (item.low && item.low < 100) {
+        if (item.high && item.high > 100000) {
+            nameColor = 'blue'; // High price
+        } else if (item.low && item.low < 10000) {
             nameColor = 'red'; // Low price
         } else {
             nameColor = 'gray'; // Neutral for no prices
@@ -165,10 +165,10 @@ function setupEventListeners() {
                 filteredItems.sort((a, b) => (a.low || Infinity) - (b.low || Infinity));
                 filteredItems = filteredItems.slice(0, 100);
                 break;
-            case 'filter-most-recent':
-                filteredItems.sort((a, b) => new Date(b.lastUpdatedHigh) - new Date(a.lastUpdatedHigh));
-                filteredItems = filteredItems.slice(0, 100);
-                break;
+            // case 'filter-most-recent':
+            //     filteredItems.sort((a, b) => new Date(b.lastUpdatedHigh) - new Date(a.lastUpdatedHigh));
+            //     filteredItems = filteredItems.slice(0, 100);
+            //     break;
         }
 
         displayItems(filteredItems);

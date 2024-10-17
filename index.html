@@ -6,10 +6,11 @@
     <meta name="description" content="Track OSRS Grand Exchange prices with real-time updates. Find the best items to buy, sell, and trade.">
     <meta name="keywords" content="OSRS, Old School RuneScape, Grand Exchange, item prices, item tracker">
     <meta name="author" content="Remedial">
-    <title>OSRS Tools</title>
     <link rel="icon" href="./imgs/1024px-Grand_Exchange_logo.png" type="image/x-icon">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" id="dynamic-stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" id="dynamic-stylesheet" href="./css/styles.css">
+    <title>OSRS Tools</title>
     <script>
         // Cache-busting: Append a timestamp to the CSS file URL
         const timestamp = new Date().getTime();
@@ -27,49 +28,35 @@
                     <ul class="nav flex-column">
                         <!-- GE Side Panel Start -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#grandExchangeSubmenu" aria-expanded="false">
+                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#grandExchangeSubmenu" aria-expanded="true" id="grandExchangeToggle">
                                 Grand Exchange
                             </a>
-                            <ul class="collapse list-unstyled" id="grandExchangeSubmenu">
+                            <ul class="collapse show list-unstyled" id="grandExchangeSubmenu">
                                 <li>
                                     <a class="nav-link" href="#" id="filter-all">All Items</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a class="nav-link" href="#" id="filter-top">Top Items</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a class="nav-link" href="#" id="filter-highest">Highest Price</a>
                                 </li>
                                 <li>
                                     <a class="nav-link" href="#" id="filter-lowest">Lowest Price</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a class="nav-link" href="#" id="filter-most-recent">Most Recent</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
-                        <!-- Flipping Side Panel Start -->
-                        <!-- <li class="nav-item">
-                            <a class="nav-link active" href="#" data-toggle="collapse" data-target="#flippingSubMenu" aria-expanded="true">
-                                Flipping
-                            </a>
-                            <ul class="collapse show list-unstyled" id="flippingSubMenu">
-                                <li>
-                                    <a class="nav-link active" href="#" id="filter-popular">Popular Items</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="#" id="filter-profit">Most Profit</a>
-                                </li>
-                            </ul>
-                        </li> -->
                     </ul>
                 </div>
             </nav>
             <!-- Main content -->
-            <main class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-left: 20%;">
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <h1 class="h2 mt-4">OSRS Grand Exchange Tracker</h1>
                 <input type="text" id="search-input" class="form-control my-3" placeholder="Search items by name or description...">
-                <div id="loading-indicator" style="display: block;">Loading items... Please wait.</div>
+                <div id="loading-indicator" class="alert alert-info" style="display: block;">Loading items... Please wait.</div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -105,9 +92,12 @@
                 console.error('js-search is not loaded');
                 alert('Error: js-search is not loaded. Please check your internet connection and refresh the page.');
             }
+
+            // Automatically expand the Grand Exchange submenu
+            $('#grandExchangeSubmenu').collapse('show'); // Show the submenu
         });
     </script>
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
     <script>
         // Handle script.js loading errors
         window.addEventListener('error', function(e) {

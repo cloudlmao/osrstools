@@ -1,9 +1,10 @@
 /* Global Styles */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif; /* Changed to Roboto */
   background-color: #eceff4; /* Soft light background */
   color: #2e3440; /* Dark grey for text */
   margin: 0; /* Remove default margin */
+  padding: 0; /* Ensure no extra padding */
 }
 
 /* Sidebar Styles */
@@ -14,15 +15,7 @@ body {
   padding: 20px 0; /* Add padding for top and bottom */
   background-color: #4c566a; /* Darker sidebar background */
   border-right: 2px solid #3b4252; /* Subtle border for separation */
-}
-
-.sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px); /* Full height minus heading */
-  padding-top: .5rem;
-  overflow-x: hidden;
-  overflow-y: auto;
+  transition: width 0.2s ease; /* Smooth width transition */
 }
 
 /* Sidebar Navigation Links */
@@ -30,6 +23,10 @@ body {
   font-weight: 500; /* Medium weight for links */
   color: #d8dee9; /* Light text for links */
   transition: color 0.2s ease; /* Smooth color transition */
+}
+
+.sidebar .nav-link:hover {
+  color: #81a1c1; /* Lighter blue on hover */
 }
 
 .sidebar .nav-link.active {
@@ -67,6 +64,12 @@ body {
   padding: 0.5rem; /* Padding for input */
   border: 1px solid #3b4252; /* Subtle border */
   border-radius: 4px; /* Rounded corners */
+  transition: border-color 0.2s ease; /* Smooth border color transition */
+}
+
+#search-input:focus {
+  border-color: #88c0d0; /* Change border color on focus */
+  outline: none; /* Remove default outline */
 }
 
 /* Grand Exchange and Flipping Submenus */
@@ -79,26 +82,16 @@ body {
 #flippingSubMenu .nav-link {
   padding: 0.5rem 1rem; /* Padding for submenu links */
   font-size: 0.9rem; /* Smaller font size */
-  transition: color 0.2s ease; /* Smooth color transition */
-}
-
-#flippingSubMenu {
-  margin-top: 10px; /* Space above flipping submenu */
 }
 
 /* Flipping Submenu Link Hover */
 #flippingSubMenu .nav-link:hover {
-  color: #81a1c1; /* Lighter blue on hover */
   text-decoration: underline; /* Underline on hover */
 }
 
 /* Item Details Row */
 .item-details-row td {
   background-color: #eceff4; /* Light background for details */
-}
-
-.item-details-row .p-3 {
-  margin: 0; /* No margin for padding */
 }
 
 /* Item Info Dropdown Styles */
