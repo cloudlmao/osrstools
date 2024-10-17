@@ -35,13 +35,15 @@ async function fetchItems() {
         displayItems(items);
         
         // Hide the loading indicator after loading items
-        $('#loading-indicator').hide(); // Add this line
+        $('#loading-indicator').hide();
 
     } catch (error) {
         console.error('Error fetching items from the RuneScape Wiki APIs:', error);
         alert('Failed to fetch items. Please check your internet connection and try again.');
+        $('#loading-indicator').hide(); // Hide loading indicator on error
     }
 }
+
 
 // Set up search functionality
 function setupSearch() {
@@ -176,7 +178,7 @@ function setupEventListeners() {
 
 // On document ready, fetch items and set up event listeners
 $(document).ready(function() {
-    console.log('Document ready. Initializing...');
-    fetchItems();
+    fetchItems(); // Call the fetchItems function when the DOM is ready
     setupEventListeners();
 });
+
