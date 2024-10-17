@@ -7,7 +7,6 @@ window.onerror = function(message, source, lineno, colno, error) {
 let items = [];
 let search = new JsSearch.Search('id');
 
-// Fetch items from the RuneScape Wiki APIs
 async function fetchItems() {
     try {
         console.log('Fetching items...');
@@ -34,6 +33,10 @@ async function fetchItems() {
         console.log(`Processed ${items.length} items.`);
         setupSearch();
         displayItems(items);
+        
+        // Hide the loading indicator after loading items
+        $('#loading-indicator').hide(); // Add this line
+
     } catch (error) {
         console.error('Error fetching items from the RuneScape Wiki APIs:', error);
         alert('Failed to fetch items. Please check your internet connection and try again.');
@@ -66,9 +69,19 @@ function displayItems(itemsToDisplay) {
     itemListElement.empty();
 
     itemsToDisplay.slice(0, 100).forEach(item => {
+        // Determine the color based on the item's price
+        let nameColor = 'black'; // Default color
+        if (item.high && item.high > 1000) {
+            nameColor = 'green'; // High price
+        } else if (item.low && item.low < 100) {
+            nameColor = 'red'; // Low price
+        } else {
+            nameColor = 'gray'; // Neutral for no prices
+        }
+
         const rowHtml = `
             <tr class="item-row" data-id="${item.id}">
-                <td>${item.name}</td>
+                <td style="color: ${nameColor};">${item.name}</td>
                 <td>${item.high ? item.high.toLocaleString() : 'N/A'}</td>
                 <td>${item.low ? item.low.toLocaleString() : 'N/A'}</td>
                 <td>${item.lastUpdatedHigh}</td>

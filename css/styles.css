@@ -1,65 +1,168 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  background-color: #eceff4; /* Soft light background */
+  color: #2e3440; /* Dark grey for text */
+  margin: 0; /* Remove default margin */
 }
 
 .sidebar {
-  height: 100vh;
-  position: fixed;
-  overflow-y: auto;
-  padding-top: 20px;
+  height: 100vh; /* Make the sidebar full height */
+  position: fixed; /* Fix the sidebar in place */
+  overflow-y: auto; /* Allow scrolling */
+  padding: 20px 0; /* Add padding for top and bottom */
+  background-color: #4c566a; /* Darker sidebar background */
+  border-right: 2px solid #3b4252; /* Subtle border for separation */
 }
 
 .sidebar-sticky {
   position: relative;
   top: 0;
-  height: calc(100vh - 48px);
+  height: calc(100vh - 48px); /* Full height minus heading */
   padding-top: .5rem;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
 .sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
+  font-weight: 500; /* Medium weight for links */
+  color: #d8dee9; /* Light text for links */
+  transition: color 0.2s ease; /* Smooth color transition */
 }
 
 .sidebar .nav-link.active {
-  color: #007bff;
+  color: #88c0d0; /* Light blue for active link */
+  background-color: #434c5e; /* Slightly darker background for active state */
+  border-left: 4px solid #88c0d0; /* Indicator for active state */
 }
 
 .sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
+  font-size: 0.75rem; /* Smaller heading */
+  text-transform: uppercase; /* Uppercase heading */
+  color: #eceff4; /* Light color for heading */
+  margin: 1rem 0; /* Space around headings */
 }
 
 .table-responsive {
-  margin-top: 20px;
+  margin-top: 20px; /* Space between elements */
 }
 
 .item-row {
-  cursor: pointer;
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.2s ease; /* Smooth hover transition */
 }
 
 .item-row:hover {
-  background-color: #f8f9fa;
+  background-color: #d8dee9; /* Light hover effect */
 }
 
 #search-input {
-  max-width: 300px;
+  max-width: 300px; /* Limit search input width */
+  padding: 0.5rem; /* Padding for input */
+  border: 1px solid #3b4252; /* Subtle border */
+  border-radius: 4px; /* Rounded corners */
 }
 
-#grandExchangeSubmenu {
-  padding-left: 20px;
+/* Grand Exchange and Flipping Submenus */
+#grandExchangeSubmenu,
+#flippingSubMenu {
+  padding-left: 20px; /* Indent submenu */
 }
 
-#grandExchangeSubmenu .nav-link {
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+#grandExchangeSubmenu .nav-link,
+#flippingSubMenu .nav-link {
+  padding: 0.5rem 1rem; /* Padding for submenu links */
+  font-size: 0.9rem; /* Smaller font size */
+  transition: color 0.2s ease; /* Smooth color transition */
+}
+
+#flippingSubMenu {
+  margin-top: 10px; /* Space above flipping submenu */
+  padding-left: 20px; /* Indent submenu */
+}
+
+#flippingSubMenu .nav-link:hover {
+  color: #81a1c1; /* Lighter blue on hover */
+  text-decoration: underline; /* Underline on hover */
 }
 
 .item-details-row td {
-  background-color: #f9f9f9;
+  background-color: #eceff4; /* Light background for details */
 }
+
 .item-details-row .p-3 {
-  margin: 0;
+  margin: 0; /* No margin for padding */
+}
+
+/* Item Info Dropdown Styles */
+.item-info-dropdown {
+  display: none; /* Hide dropdown by default */
+  position: absolute; /* Position it relative to the parent */
+  background-color: #eceff4; /* Match the background */
+  border: 1px solid #3b4252; /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  padding: 15px; /* Padding inside the dropdown */
+  width: 300px; /* Set a fixed width for dropdown */
+  z-index: 1000; /* Ensure it appears above other elements */
+  transition: opacity 0.2s ease, visibility 0.2s ease; /* Smooth appearance */
+  opacity: 0; /* Start invisible */
+  visibility: hidden; /* Hidden by default */
+}
+
+/* Show the dropdown when it's active */
+.item-info-dropdown.active {
+  display: block; /* Allow it to be shown */
+  opacity: 1; /* Fully visible */
+  visibility: visible; /* Set visibility to visible */
+}
+
+.item-info-dropdown h3 {
+  margin: 0 0 10px; /* Margin below the heading */
+  color: #2e3440; /* Dark grey for text */
+  font-size: 1.2rem; /* Larger font size for the heading */
+}
+
+.item-info-dropdown p {
+  margin: 5px 0; /* Space between paragraphs */
+  color: #4c566a; /* Darker grey for secondary text */
+  font-size: 0.9rem; /* Smaller font size */
+}
+
+.item-info-dropdown .item-price {
+  font-weight: bold; /* Bold for the price */
+  color: #88c0d0; /* Highlight color for price */
+}
+
+.item-info-dropdown .item-details {
+  margin-top: 10px; /* Space above details */
+}
+
+/* Arrow for dropdown direction */
+.item-info-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -8px; /* Position above dropdown */
+  left: 20px; /* Center it under the heading */
+  border-width: 8px; /* Size of the arrow */
+  border-style: solid;
+  border-color: transparent transparent #eceff4 transparent; /* Arrow color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative; /* Allow sidebar to scroll with content on smaller screens */
+    height: auto; /* Set height to auto */
+    padding: 10px 0; /* Adjust padding */
+    border-right: none; /* Remove border on smaller screens */
+  }
+  
+  main {
+    margin-left: 0; /* Remove left margin for main content */
+    padding: 0; /* Remove padding */
+  }
+  
+  #search-input {
+    max-width: 100%; /* Full width for smaller screens */
+  }
 }

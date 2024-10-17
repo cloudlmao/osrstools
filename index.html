@@ -6,29 +6,23 @@
     <title>OSRS Grand Exchange Tracker</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
-    <style>
-        #loading-indicator {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
                 <div class="sidebar-sticky">
                     <h4 class="sidebar-heading">OSRS Tracker</h4>
                     <ul class="nav flex-column">
+                        <!-- GE Side Panel Start -->
                         <li class="nav-item">
-                            <a class="nav-link active" href="#" data-toggle="collapse" data-target="#grandExchangeSubmenu" aria-expanded="true">
+                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#grandExchangeSubmenu" aria-expanded="false">
                                 Grand Exchange
                             </a>
-                            <ul class="collapse show list-unstyled" id="grandExchangeSubmenu">
+                            <ul class="collapse list-unstyled" id="grandExchangeSubmenu">
                                 <li>
-                                    <a class="nav-link active" href="#" id="filter-all">All Items</a>
+                                    <a class="nav-link" href="#" id="filter-all">All Items</a>
                                 </li>
                                 <li>
                                     <a class="nav-link" href="#" id="filter-top">Top Items</a>
@@ -44,11 +38,25 @@
                                 </li>
                             </ul>
                         </li>
+                        <!-- Flipping Side Panel Start -->
+                        <!-- <li class="nav-item">
+                            <a class="nav-link active" href="#" data-toggle="collapse" data-target="#flippingSubMenu" aria-expanded="true">
+                                Flipping
+                            </a>
+                            <ul class="collapse show list-unstyled" id="flippingSubMenu">
+                                <li>
+                                    <a class="nav-link active" href="#" id="filter-popular">Popular Items</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#" id="filter-profit">Most Profit</a>
+                                </li>
+                            </ul>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
             <!-- Main content -->
-            <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <main class="col-md-9 ml-sm-auto col-lg-10 px-4" style="margin-left: 20%;">
                 <h1 class="h2 mt-4">OSRS Grand Exchange Tracker</h1>
                 <input type="text" id="search-input" class="form-control my-3" placeholder="Search items by name or description...">
                 <div id="loading-indicator">Loading items... Please wait.</div>
@@ -77,8 +85,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-search@2.0.0/dist/umd/js-search.min.js"></script>
     <script>
-        // Inline script to check if external scripts are loaded
-        window.addEventListener('load', function() {
+        // Ensure jQuery and JsSearch are loaded
+        $(document).ready(function() {
             if (typeof jQuery === 'undefined') {
                 console.error('jQuery is not loaded');
                 alert('Error: jQuery is not loaded. Please check your internet connection and refresh the page.');
@@ -91,7 +99,7 @@
     </script>
     <script src="./js/script.js"></script>
     <script>
-        // Inline script to handle script loading errors
+        // Handle script.js loading errors
         window.addEventListener('error', function(e) {
             if (e.filename.endsWith('script.js')) {
                 console.error('Error loading script.js:', e.message);
