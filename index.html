@@ -6,11 +6,13 @@
     <title>OSRS Grand Exchange Tracker</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/js-search@2.0.0/dist/umd/js-search.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="./js/script.js" defer></script>
+    <style>
+        #loading-indicator {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container-fluid">
@@ -21,7 +23,7 @@
                     <h4 class="sidebar-heading">OSRS Tracker</h4>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#" data-toggle="collapse" data-target="#grandExchangeSubmenu" aria-expanded="false">
+                            <a class="nav-link active" href="#" data-toggle="collapse" data-target="#grandExchangeSubmenu" aria-expanded="true">
                                 Grand Exchange
                             </a>
                             <ul class="collapse show list-unstyled" id="grandExchangeSubmenu">
@@ -49,6 +51,7 @@
             <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <h1 class="h2 mt-4">OSRS Grand Exchange Tracker</h1>
                 <input type="text" id="search-input" class="form-control my-3" placeholder="Search items by name or description...">
+                <div id="loading-indicator">Loading items... Please wait.</div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -67,5 +70,34 @@
             </main>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-search@2.0.0/dist/umd/js-search.min.js"></script>
+    <script>
+        // Inline script to check if external scripts are loaded
+        window.addEventListener('load', function() {
+            if (typeof jQuery === 'undefined') {
+                console.error('jQuery is not loaded');
+                alert('Error: jQuery is not loaded. Please check your internet connection and refresh the page.');
+            }
+            if (typeof JsSearch === 'undefined') {
+                console.error('js-search is not loaded');
+                alert('Error: js-search is not loaded. Please check your internet connection and refresh the page.');
+            }
+        });
+    </script>
+    <script src="./js/script.js"></script>
+    <script>
+        // Inline script to handle script loading errors
+        window.addEventListener('error', function(e) {
+            if (e.filename.endsWith('script.js')) {
+                console.error('Error loading script.js:', e.message);
+                alert('Error loading script.js. Please check the console for more information.');
+            }
+        }, true);
+    </script>
 </body>
 </html>
