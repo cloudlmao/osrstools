@@ -24,9 +24,9 @@
                             <a class="nav-link active" href="#" data-toggle="collapse" data-target="#grandExchangeSubmenu" aria-expanded="false">
                                 Grand Exchange
                             </a>
-                            <ul class="collapse list-unstyled" id="grandExchangeSubmenu">
+                            <ul class="collapse show list-unstyled" id="grandExchangeSubmenu">
                                 <li>
-                                    <a class="nav-link" href="#" id="filter-all">All Items</a>
+                                    <a class="nav-link active" href="#" id="filter-all">All Items</a>
                                 </li>
                                 <li>
                                     <a class="nav-link" href="#" id="filter-top">Top Items</a>
@@ -42,14 +42,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- Add more main categories here if needed -->
                     </ul>
                 </div>
             </nav>
             <!-- Main content -->
             <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <h1 class="h2 mt-4">Grand Exchange Items</h1>
-                <input type="text" id="search-input" class="form-control my-3" placeholder="Search items...">
+                <h1 class="h2 mt-4">OSRS Grand Exchange Tracker</h1>
+                <input type="text" id="search-input" class="form-control my-3" placeholder="Search items by name or description...">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -57,7 +56,7 @@
                                 <th scope="col">Item Name</th>
                                 <th scope="col">High Price</th>
                                 <th scope="col">Low Price</th>
-                                <th scope="col">Last Updated</th>
+                                <th scope="col">Last Updated (High)</th>
                             </tr>
                         </thead>
                         <tbody id="item-list">
@@ -67,10 +66,6 @@
                 </div>
             </main>
         </div>
-    </div>
-    <!-- Item Details Modal (unchanged) -->
-    <div class="modal fade" id="itemDetailsModal" tabindex="-1" role="dialog" aria-labelledby="itemDetailsModalLabel" aria-hidden="true">
-        <!-- Modal content remains the same -->
     </div>
 </body>
 </html>
